@@ -14,7 +14,12 @@
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/login', 'AccountController@view');
-route::post('/login', function () {
-    echo "ha ha";
-});
+route::get('/check','AccountController@index');
+Route::get('/login', 'AccountController@login');
+Route::post('login','AccountController@postLogin');
+Route::get('/login/admin', 'AccountController@login');
+Route::post('login/admin','AccountControllerAdmin@postLogin');
+//route::post('login','AccountController@newAccount');
+Route::get('/register', 'RegistrationController@create');
+Route::post('register', 'RegistrationController@store');
+Route::get('/home', 'HomeController@home');
