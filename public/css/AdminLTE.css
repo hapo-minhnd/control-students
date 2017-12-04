@@ -5671,3 +5671,6 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+.teacher.admin {
+  display: none;
+}

@@ -14,6 +14,6 @@ class HomeController extends Controller
         return 'Đăng nhập thành công!';
     }
     public function home(){
-        return view('layouts.home');
+        return view('home');
     }
 }
