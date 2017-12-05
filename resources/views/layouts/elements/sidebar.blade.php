@@ -10,7 +10,12 @@
             </div>
             <div class="pull-left info">
                 <p><?php
-                        echo "admin";
+                    if (Session::has('user')) {
+                        echo "ok";
+                    }
+                    else{
+                        echo "fuck";
+                    }
                     ?></p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -40,9 +45,11 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Thông tin chung</a></li>
+                    <li><a href="{{route('infoMember')}}">Thông tin chung</a></li>
+                    <li><a href="{{route('update_infoMember')}}">Cập nhật Thông tin cá nhân</a></li>
                     <li><a href="#">Kiểm tra thông tin</a></li>
-                    <li><a href="#">Cập nhật điểm</a></li>
+                    <li><a href="{{route('update_score')}}">Cập nhật điểm</a></li>
+
                 </ul>
             </li>
             <li class="treeview">
@@ -63,8 +70,8 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Tạo xóa tài khoản sinh viên</a></li>
-                    <li><a href="http://localhost:8000/register">Tạo xóa tài giáo viên</a></li>
+                    <li><a href="{{route('createMember')}}">Tạo xóa tài khoản sinh viên</a></li>
+                    <li><a href="{{route('createMember')}}">Tạo xóa tài giáo viên</a></li>
                 </ul>
             </li>
             <li class="treeview admin">
@@ -77,6 +84,16 @@
                     <li><a href="#">Reset password</a></li>
                     <li><a href="#">Cập nhật gmail</a></li>
                     <li><a href="#">Cập nhật sdt </a></li>
+                </ul>
+            </li>
+            <li class="treeview admin">
+                <a ><i class="fa fa-link"></i> <span>Quản lý tài khoản</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('logOutAdmin')}}">Thoát tài khoản</a></li>
                 </ul>
             </li>
         </ul>

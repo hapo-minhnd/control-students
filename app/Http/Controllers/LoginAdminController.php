@@ -34,12 +34,16 @@ class LoginAdminController extends Controller
             $email = $request->input('email');
             $password = $request->input('password');
             if( Auth::guard('admin')->attempt(['email' => $email, 'password' =>$password])) {
-
+                $request->session()->put('user', 'admin');
                 return redirect()->intended('/home');
             }
             else {
                 $errors = new MessageBag(['errorlogin' => 'Email hoặc mật khẩu không đúng']);
                 return redirect()->back()->withInput()->withErrors($errors);
             }
+    }
+    public function logOut_Admin(){
+        Auth::guard('admin')->logout();
+        return redirect('login/admin');
     }
 }

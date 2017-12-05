@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Quản lý học sinh</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="/css/AdminLTE.css">
     <link rel="stylesheet" href="/css/skin-blue.css">
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -26,8 +26,8 @@
     @include('layouts.elements.control-sidebar')
 
 </div>
-<script src="layouts/js/jquery-3.1.1.min.js"></script>
-<script src="layouts/js/bootstrap.js"></script>
-<script src="layouts/js/adminlte.js"></script>
+<script src="{{asset('layouts/js/jquery-3.1.1.min.js')}}"></script>
+<script src="{{asset('layouts/js/bootstrap.js')}}"></script>
+<script src="{{asset('layouts/js/adminlte.js')}}"></script>
 </body>
 </html>

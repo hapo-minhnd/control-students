@@ -40,7 +40,6 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Thông tin chung</a></li>
                     <li><a href="#">Kiểm tra thông tin</a></li>
                     <li><a href="#">Cập nhật điểm</a></li>
                 </ul>
@@ -55,6 +54,7 @@
                     <li><a href="#">Thông tin</a></li>
                     <li><a href="#">Lịch làm việc</a></li>
                     <li><a href="#">Cập nhật thông tin</a></li>
+                    <li><a href="{{route('logOutMember')}}">Thoát tài khoản</a></li>
                 </ul>
             </li>
             <li class="treeview" style="display: none">
