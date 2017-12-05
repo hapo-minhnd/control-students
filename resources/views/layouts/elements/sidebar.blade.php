@@ -14,7 +14,7 @@
                         echo "ok";
                     }
                     else{
-                        echo "fuck";
+                        echo "not done";
                     }
                     ?></p>
                 <!-- Status -->
