@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Validator;
 use Auth;
 use Illuminate\Support\MessageBag;
+use App\Http\Requests\LoginPost;
 
 
 class AccountController extends Controller
@@ -23,17 +24,17 @@ class AccountController extends Controller
             return view('info_member');
         }
     }
-    public function update_info(){
+    public function updateInfo(){
         {
             return view('update_info_member');
         }
     }
-    public function update_score(){
+    public function updateScore(){
         {
             return view('update_score');
         }
     }
-    public function postLogin(Requests\LoginPost $request) {
+    public function postLogin(LoginPost $request) {
         $email = $request->input('email');
         $password = $request->input('password');
         if( Auth::attempt(['email' => $email, 'password' =>$password])) {

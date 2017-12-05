@@ -54,7 +54,7 @@
                     <li><a href="#">Thông tin</a></li>
                     <li><a href="#">Lịch làm việc</a></li>
                     <li><a href="#">Cập nhật thông tin</a></li>
-                    <li><a href="{{route('logOutMember')}}">Thoát tài khoản</a></li>
+                    <li><a href="{{route('log_Out_Member')}}">Thoát tài khoản</a></li>
                 </ul>
             </li>
             <li class="treeview" style="display: none">
