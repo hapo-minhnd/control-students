@@ -5674,3 +5674,16 @@ table.text-center th {
 .teacher.admin {
   display: none;
 }
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+  text-align: center;
+}
+table{
+  width: 100%;
+  text-align: center;
+}
