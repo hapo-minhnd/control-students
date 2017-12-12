@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form action="{{url('login/admin')}}" method="POST" role="form">
+            <form action="{{url('admin/login')}}" method="POST" role="form">
                 <legend>Login</legend>
                 @if($errors->has('errorlogin'))
                     <div class="alert alert-danger">

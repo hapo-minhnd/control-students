@@ -1,4 +1,4 @@
-@extends('layouts.elements.front')
+@extends('layouts.elements.front_admin')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->

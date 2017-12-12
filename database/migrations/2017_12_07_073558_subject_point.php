@@ -4,25 +4,25 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminTable extends Migration
+class SubjectPoint extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+    /*public function up()
     {
-       /*Schema::create('admin', function (Blueprint $table) {
+        Schema::create('subject_point', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('code_student');
             $table->string('name');
-            $table->string('username')->unique();
-            $table->string('email');
-            $table->string('password');
+            $table->string('code_subject');
+            $table->string('point');
             $table->rememberToken();
             $table->timestamps();
-        });*/
-    }
+        });
+    }*/
 
     /**
      * Reverse the migrations.
@@ -31,6 +31,7 @@ class CreateAdminTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('subject_point');
+
     }
 }

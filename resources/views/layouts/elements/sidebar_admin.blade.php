@@ -9,7 +9,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>teacher</p>
+                <p>Admin</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -37,8 +37,11 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li><a href="{{route('info_Member')}}">Thông tin chung</a></li>
+                    <li><a href="{{route('update_info_Member')}}">Cập nhật Thông tin cá nhân</a></li>
                     <li><a href="#">Kiểm tra thông tin</a></li>
-                    <li><a href="#">Cập nhật điểm</a></li>
+                    <li><a href="{{route('update_score')}}">Cập nhật điểm</a></li>
+
                 </ul>
             </li>
             <li class="treeview">
@@ -50,18 +53,29 @@
                 <ul class="treeview-menu">
                     <li><a href="#">Thông tin</a></li>
                     <li><a href="#">Lịch làm việc</a></li>
-                    <li><a href="#">Cập nhật thông tin</a></li>
                 </ul>
             </li>
-            <li class="treeview" style="display: none">
+            <li class="treeview admin">
                 <a href="#"><i class="fa fa-link"></i> <span>Tạo mới tài khoản</span>
                     <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Tạo xóa tài khoản sinh viên</a></li>
-                    <li><a href="#">Tạo xóa tài khoản học sinh</a></li>
+                    <li><a href="{{route('create_student')}}">Tạo xóa tài khoản sinh viên</a></li>
+                    <li><a href="{{route('create_Member')}}">Tạo xóa tài giáo viên</a></li>
+                </ul>
+            </li>
+            <li class="treeview admin">
+                <a href="#"><i class="fa fa-link"></i> <span>Thay đổi thông tin</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#">Reset password</a></li>
+                    <li><a href="#">Cập nhật gmail</a></li>
+                    <li><a href="#">Cập nhật sdt </a></li>
                 </ul>
             </li>
             <li class="treeview admin">
@@ -71,7 +85,7 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('log_Out_Member')}}">Thoát tài khoản</a></li>
+                    <li><a href="{{route('log_Out_Admin')}}">Thoát tài khoản</a></li>
                 </ul>
             </li>
         </ul>
