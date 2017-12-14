@@ -30,7 +30,7 @@ class StoreStudent extends FormRequest
             'year_of_birth' => 'required|max:100',
             'address' => 'required|max:100',
             'code_class' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email'
         ];
     }
     public function messages()

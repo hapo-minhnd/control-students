@@ -24,8 +24,8 @@ class ManageStudentController extends Controller
     public function index(Request $request)
     {
         if($request->has('code_student')){
-            $CS = $request->input('code_student');
-            $students = student::where('code_student', 'like', "%{$CS}%")->paginate(5);
+            $cs = $request->input('code_student');
+            $students = student::where('code_student', 'like', "%{$cs}%")->paginate(5);
             return view('admin.info_member', ['students' => $students]);
         }
         else{
@@ -58,7 +58,7 @@ class ManageStudentController extends Controller
     }*/
     public function view()
     {
-        return view('admin/create');
+        return view('admin.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class ManageStudentController extends Controller
      */
     public function store(StoreStudent $request)
     {
-        $this->validate(request(), [
+        //$this->validate(request(), [
            // 'code_student' =>'required|max:12',
             //'password' => 'required|min:8',
             //'name' => 'required|max:100',
@@ -75,7 +75,7 @@ class ManageStudentController extends Controller
             //'address' => 'required|max:100',
             //'code_class' => 'required',
             //'email' => 'required|email',
-        ]);
+        //]);
         //dd($request->all());
         $user = student::create($request->all());
         //auth()->login($user);

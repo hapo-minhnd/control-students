@@ -33,8 +33,6 @@
                         <p style="color:red">{{$errors->first('password')}}</p>
                     @endif
                 </div>
-
-
                 {!! csrf_field() !!}
                 <button type="submit" class="btn btn-primary" name="accept">Đăng nhập</button>
 

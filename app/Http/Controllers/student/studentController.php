@@ -9,7 +9,7 @@ use App\Http\Requests\LoginPost;
 use Auth;
 class StudentController extends Controller
 {
-    public function Admin()
+    public function admin()
     {
         return view('registration.create_admin');
     }
@@ -57,7 +57,7 @@ class StudentController extends Controller
         }
     }
 
-    public function logOut_Admin()
+    public function logoutAdmin()
     {
         Auth::guard('admin')->logout();
         return redirect('admin/login');
@@ -67,11 +67,11 @@ class StudentController extends Controller
     {
 
 
-        $this->validate(request(), [
+        /*$this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required'
-        ]);
+        ]);*/
         $user = Admin::create(request(['name', 'email', 'password']));
 
         auth()->login($user);

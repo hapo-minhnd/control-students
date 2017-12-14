@@ -25,7 +25,8 @@ class LoginPost extends FormRequest
     {
         return [
             'email' =>'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
+            'errorlogin' => 'null'
         ];
     }
     public function messages()
@@ -35,6 +36,7 @@ class LoginPost extends FormRequest
             'email.email' => trans('customer.email.email'),
             'password.required' => trans('customer.email.psw_required'),
             'password.min' => trans('customer.email.psw_min'),
+            'errorlogin' => trans('customer.error.login'),
         ];
     }
 }

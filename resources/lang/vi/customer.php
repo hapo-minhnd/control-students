@@ -11,5 +11,8 @@ return array(
         'email' => 'Email không đúng định dạng',
         'psw_required' => 'Mật khẩu là trường bắt buộc',
         'psw_min' =>'Mật khẩu phải chứa ít nhất 8 ký tự',
-    ]
+    ],
+    'error' =>[
+        'login' => 'Email hoặc mật khẩu không đúng',
+]
 );

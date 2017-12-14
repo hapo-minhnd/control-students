@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginPost;
 use Auth;
+use Illuminate\Mail\Message;
+use Illuminate\Support\MessageBag;
+
 class AdminController extends Controller
 {
     public function admin()
@@ -17,7 +20,7 @@ class AdminController extends Controller
 
     public function home()
     {
-        return view('admin/home');
+        return view('admin.home');
     }
 
     public function info()
@@ -44,7 +47,7 @@ class AdminController extends Controller
     public function login()
     {
         {
-            return view('admin/login_admin');
+            return view('admin.login_admin');
         }
     }
 
@@ -58,6 +61,10 @@ class AdminController extends Controller
         return Auth::guard('admin');
     }
 
+    /**
+     * @param LoginPost $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function postLogin(LoginPost $request)
     {
 
@@ -67,15 +74,14 @@ class AdminController extends Controller
             $request->session()->put('user', 'admin');
             return redirect()->intended('admin/home');
         } else {
-            $errors = new MessageBag(['errorlogin' => 'Email hoặc mật khẩu không đúng']);
-            return redirect()->back()->withInput()->withErrors($errors);
+            return redirect()->back()->withErrors(['errorlogin' => trans('customer.error.login')]);
         }
     }
 
     public function logoutAdmin()
     {
         Auth::guard('admin')->logout();
-        return redirect('admin/login');
+        return redirect('admin.login');
     }
 
     public function store(StoreStudent $request)
@@ -91,7 +97,7 @@ class AdminController extends Controller
 
         //auth()->login($user);
 
-        return redirect()->to('/welcome');
+        return redirect()->to('welcome');
     }
 
 }
