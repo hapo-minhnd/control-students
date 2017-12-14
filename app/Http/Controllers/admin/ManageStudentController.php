@@ -24,8 +24,8 @@ class ManageStudentController extends Controller
     public function index(Request $request)
     {
         if($request->has('code_student')){
-            $MSSV = $request->input('code_student');
-            $students = DB::table('student')->where('code_student' , $MSSV)->paginate(5);
+            $CS = $request->input('code_student');
+            $students = student::where('code_student', 'like', "%{$CS}%")->paginate(5);
             return view('admin.info_member', ['students' => $students]);
         }
         else{

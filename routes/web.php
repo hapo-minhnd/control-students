@@ -41,7 +41,7 @@ Route::get('/', 'AccountController@LogOut_Member')->name('log_Out_Member');
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/login', 'AdminController@login')->name('login_Admin');
     Route::post('/login', 'AdminController@postlogin');
-    Route::get('/logout', 'AdminController@LogOut_Admin')->name('log_Out_Admin');
+    Route::get('/logout', 'AdminController@logOutAdmin')->name('log_Out_Admin');
     Route::group(['middleware' => 'admin', 'prefix' => 'home'], function () {
         route::get('/', 'AdminController@home')->name('homeAdmin');
         route::get('/info', 'ManageStudentController@index')->name('info_Member');
