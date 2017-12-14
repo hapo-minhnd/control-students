@@ -10,7 +10,7 @@ use App\Http\Requests\LoginPost;
 use Auth;
 class AdminController extends Controller
 {
-    public function Admin()
+    public function admin()
     {
         return view('registration.create_admin');
     }
