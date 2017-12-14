@@ -13,16 +13,25 @@ use Illuminate\Support\MessageBag;
 
 class AdminController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function admin()
     {
         return view('registration.create_admin');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function home()
     {
         return view('admin.home');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function info()
     {
         {
@@ -30,6 +39,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function updateInfo()
     {
         {
@@ -37,6 +49,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function updateScore()
     {
         {
@@ -44,6 +59,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function login()
     {
         {
@@ -51,11 +69,17 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * AdminController constructor.
+     */
     public function __construct()
     {
         return $this->middleware('guest');
     }
 
+    /**
+     * @return mixed
+     */
     protected function guard()
     {
         return Auth::guard('admin');
@@ -78,21 +102,22 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logoutAdmin()
     {
         Auth::guard('admin')->logout();
-        return redirect('admin.login');
+        return redirect(route('login_Admin'));
     }
 
+    /**
+     * @param StoreStudent $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(StoreStudent $request)
     {
-
-
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        /** @var TYPE_NAME $user */
         $user = Admin::create(request(['name', 'email', 'password']));
 
         //auth()->login($user);

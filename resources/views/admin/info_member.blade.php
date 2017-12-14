@@ -33,7 +33,7 @@
                 <th>Address</th>
                 <th>code class</th>
             <tr>
-            @foreach($students as $student)
+                @foreach(  $students as $student)
                 <tr>
                     <td>{{ $student->code_student }}</td>
                     <td>{{ $student->name }}</td>
@@ -41,7 +41,6 @@
                     <td>{{ $student->address }}</td>
                     <td>{{ $student->code_class }}</td>
                 </tr>
-
             @endforeach
             </table>
             <div class="text-center">

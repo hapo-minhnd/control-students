@@ -9,16 +9,25 @@ use App\Http\Requests\LoginPost;
 use Auth;
 class StudentController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function admin()
     {
         return view('registration.create_admin');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function home()
     {
         return view('home');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function info()
     {
         {
@@ -26,6 +35,9 @@ class StudentController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function login()
     {
         {
@@ -33,16 +45,26 @@ class StudentController extends Controller
         }
     }
 
+    /**
+     * StudentController constructor.
+     */
     public function __construct()
     {
         return $this->middleware('guest');
     }
 
+    /**
+     * @return mixed
+     */
     protected function guard()
     {
         return Auth::guard('admin');
     }
 
+    /**
+     * @param LoginPost $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function postLogin(LoginPost $request)
     {
 
@@ -57,6 +79,9 @@ class StudentController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logoutAdmin()
     {
         Auth::guard('admin')->logout();

@@ -6,7 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class student extends Authenticatable
+/**
+ * Class Student
+ * @package App\Http\Models
+ */
+class Student extends Authenticatable
 {
     protected $table = 'student';
     use Notifiable;
@@ -28,7 +32,11 @@ class student extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function setPasswordAttribute($password)
+
+    /**
+     * @param $password
+     */
+    public function setPassword($password)
     {
         $this->attributes['password'] = bcrypt($password);
     }

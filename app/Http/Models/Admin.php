@@ -28,7 +28,18 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function setPasswordAttribute($password)
+
+    /**
+     * @param $request
+     */
+    public static function create($request)
+    {
+    }
+
+    /**
+     * @param $password
+     */
+    public function setPassword($password)
     {
         $this->attributes['password'] = bcrypt($password);
     }
