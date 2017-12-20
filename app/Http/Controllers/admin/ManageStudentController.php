@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Models\PointSubject;
+use App\Http\Requests\UpdatePoint;
 use App\Http\Requests\StoreStudent;
-use App\Http\Models\student;
+use App\Http\Models\Student;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateStudent;
 use Illuminate\Http\Request;
-use App\Http\Requests\LoginPost;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Auth;
 class ManageStudentController extends Controller
 {
@@ -36,12 +36,35 @@ class ManageStudentController extends Controller
     {
         if($request->has('code_student')){
             $cs = $request->input('code_student');
-            $students = Student::where('code_student', 'like', "%{$cs}%")->paginate(5);
+            $students = Student::where('code_student' , 'like', "%{$cs}%")->orWhere('code_class' , 'like', "%{$cs}%")->paginate(5);
             return view('admin.info_member', ['students' => $students]);
         }
         else{
         $students = Student::paginate(5);
         return view('admin.info_member', ['students' => $students]);
+        }
+    }
+    public function indexPoint(Request $request)
+    {
+        if(($request->input('code_student') != '') && ($request->input('semester') != '')){
+            $cs = $request->input('code_student');
+            $sm = $request->input('semester');
+            $pointSubjects = \App\Http\Models\pointSubject::where('code_student' , 'like', "%{$cs}%")->Where('semester' , 'like', "%{$sm}%")->paginate(5);
+            return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
+        }
+        else if($request->input('code_student') != ''){
+            $cs = $request->input('code_student');
+            $pointSubjects = \App\Http\Models\pointSubject::where('code_student' , 'like', "%{$cs}%")->paginate(5);
+            return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
+        }
+        else if($request->input('semester') != ''){
+            $sm = $request->input('semester');
+            $pointSubjects = \App\Http\Models\pointSubject::Where('semester' , 'like', "%{$sm}%")->paginate(5);
+            return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
+        }
+        else{
+            $pointSubjects = \App\Http\Models\pointSubject::paginate(5);
+            return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
     }
 /*
@@ -72,24 +95,37 @@ class ManageStudentController extends Controller
         return view('admin.create');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function store(StoreStudent $request)
     {
-        //$this->validate(request(), [
-           // 'code_student' =>'required|max:12',
-            //'password' => 'required|min:8',
-            //'name' => 'required|max:100',
-            //'Year_of_birth' => 'required|max:100',
-            //'address' => 'required|max:100',
-            //'code_class' => 'required',
-            //'email' => 'required|email',
-        //]);
-        //dd($request->all());
         $user = Student::create($request->all());
-        //auth()->login($user);
-        return redirect()->route('homeAdmin');
+
+        return redirect(route('homeAdmin'));
+    }
+    public function updateStudent(UpdateStudent $request, $id)
+    {
+            $student = Student::findOrFail($id);
+            $student->code_student = $request->code_student;
+            $student->name = $request->name;
+            $student->year_of_birth = $request->year_of_birth;
+            $student->address = $request->address;
+            $student->code_class = $request->code_class;
+            $student->save();
+        return redirect(route('info_Member'));
+    }
+    public function storePoint(UpdatePoint $request)
+    {
+        $user = PointSubject::create($request->all());
+        return redirect(route('update_score'));
+    }
+    public function updatePoint(UpdatePoint $request, $id)
+    {
+        $pointSubject = \App\Http\Models\pointSubject::findOrFail($id);
+        $pointSubject->code_student = $request->code_student;
+        $pointSubject->name = $request->name;
+        $pointSubject->point = $request->point;
+        $pointSubject->semester = $request->semester;
+        $pointSubject->save();
+        return redirect(route('update_score'));
     }
 }

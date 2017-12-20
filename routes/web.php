@@ -38,18 +38,22 @@ Route::get('/', 'AccountController@LogOut_Member')->name('log_Out_Member');
 //route::get('/homeMember/update_score', 'AccountController@updateScore')->name('update_score')->middleware('admin');
 
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('/login', 'AdminController@login')->name('login_Admin');
     Route::post('/login', 'AdminController@postlogin');
     Route::get('/logout', 'AdminController@logoutAdmin')->name('log_Out_Admin');
     Route::group(['middleware' => 'admin', 'prefix' => 'home'], function () {
         route::get('/', 'AdminController@home')->name('homeAdmin');
         route::get('/info', 'ManageStudentController@index')->name('info_Member');
-        route::post('/info', 'ManageStudentController@index')->name('sreach_student');
+        route::get('/info/sreach', 'ManageStudentController@index')->name('sreach_student');
+        route::put('/info/{id}', 'ManageStudentController@updateStudent')->name('update_student');
         route::get('/update_info', 'AdminController@updateInfo')->name('update_info_Member');
-        route::get('/update_score', 'AdminController@updateScore')->name('update_score');
-        route::get('/create/student', 'ManageStudentController@view')->name('create_student');
-        route::post('create/student', 'ManageStudentController@store');
+        route::get('/update_score', 'ManageStudentController@indexPoint')->name('update_score');
+        route::get('/update_score/sreach', 'ManageStudentController@indexPoint')->name('sreach_score');
+        route::put('/update_score/{id}', 'ManageStudentController@updatePoint')->name('update_point');
+        route::post('/update_score', 'ManageStudentController@storePoint')->name('create_point');
+        route::get('/create/student', 'ManageStudentController@view')->name('get_create_student');
+        route::post('/create/student', 'ManageStudentController@store')->name('create_student');
     });
 });
 Route::group(['namespace' => 'student', 'prefix' => 'student'], function (){

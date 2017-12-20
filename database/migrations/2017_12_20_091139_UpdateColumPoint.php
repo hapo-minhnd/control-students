@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Subject extends Migration
+class UpdateColumPoint extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class Subject extends Migration
      */
     public function up()
     {
-        /*Schema::create('subject', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('code_subject')->unique();
-            $table->string('name_subject');
-            $table->rememberToken();
-            $table->timestamps();
-        });*/
+        Schema::table('subject_point', function (Blueprint $table) {
+            $table->string('point')->nullable();
+        });
     }
 
     /**
@@ -29,6 +25,6 @@ class Subject extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subject');
+        //
     }
 }

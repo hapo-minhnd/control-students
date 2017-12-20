@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <h2>Register</h2>
-                         <form method="POST" action="{{url('admin/home/create/student')}}" class="form-validate">
+                         <form method="post" action="{{url('admin/home/create/student')}}" class="form-validate">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="code_student">Code student:</label>
@@ -49,11 +49,11 @@
                                  <p class="bg-danger">{{$errors->first('name')}}</p>
                              @endif
                             <div class="form-group">
-                                <label for="Year_of_birth">Year of birth:</label>
-                                <input type="date" class="form-control" id="Year_of_birth" name="Year_of_birth">
+                                <label for="year_of_birth">Year of birth:</label>
+                                <input type="date" class="form-control" id="year_of_birth" name="year_of_birth">
                             </div>
-                             @if($errors->has('Year_of_birth'))
-                                 <p class="bg-danger">{{$errors->first('Year_of_birth')}}</p>
+                             @if($errors->has('year_of_birth'))
+                                 <p class="bg-danger">{{$errors->first('year_of_birth')}}</p>
                              @endif
                             <div class="form-group">
                                 <label for="address">Adress:</label>

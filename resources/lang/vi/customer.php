@@ -14,5 +14,23 @@ return array(
     ],
     'error' =>[
         'login' => 'Email hoặc mật khẩu không đúng',
-]
+    ],
+    'name' => [
+        'required' => 'Tên là trường bắt buộc',
+        'max' => 'Tên quá dài',
+    ],
+    'year_of_birth' => [
+        'required' => 'Năm sinh không đúng định dạng',
+    ],
+    'address' => [
+        'required' => 'Địa chỉ là trường bắt buộc',
+        'max' => 'Địa chỉ quá dài',
+    ],
+    'code_student' => [
+        'required' => 'Mã sinh viên là trường bắt buộc',
+        'max' => 'Mã sinh viên quá dài',
+    ],
+    'code_class' => [
+        'required' => 'Mã lớp là trường bắt buộc',
+    ],
 );

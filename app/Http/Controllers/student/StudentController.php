@@ -12,11 +12,6 @@ class StudentController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function admin()
-    {
-        return view('registration.create_admin');
-    }
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

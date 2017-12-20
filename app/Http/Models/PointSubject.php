@@ -10,9 +10,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * Class Student
  * @package App\Http\Models
  */
-class Student extends Authenticatable
+class PointSubject extends Authenticatable
 {
-    protected $table = 'student';
+    protected $table = 'subject_point';
     use Notifiable;
 
     /**
@@ -21,7 +21,7 @@ class Student extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'code_student', 'password', 'name', 'year_of_birth', 'address', 'code_class', 'email',
+        'code_student', 'name', 'code_subject', 'point', 'semester'
     ];
 
     /**

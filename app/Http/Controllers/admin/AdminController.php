@@ -16,11 +16,6 @@ class AdminController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function admin()
-    {
-        return view('registration.create_admin');
-    }
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -55,7 +50,7 @@ class AdminController extends Controller
     public function updateScore()
     {
         {
-            return view('update_score');
+            return view('admin.update_score');
         }
     }
 
@@ -115,12 +110,10 @@ class AdminController extends Controller
      * @param StoreStudent $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreStudent $request)
+    public function store(Admin $request)
     {
         /** @var TYPE_NAME $user */
         $user = Admin::create(request(['name', 'email', 'password']));
-
-        //auth()->login($user);
 
         return redirect()->to('welcome');
     }
