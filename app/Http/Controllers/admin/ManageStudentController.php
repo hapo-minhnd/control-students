@@ -46,6 +46,7 @@ class ManageStudentController extends Controller
     }
     public function indexPoint(Request $request)
     {
+        /*dd( Auth::guard('admin')->user()->id);*/
         if(($request->input('code_student') != '') && ($request->input('semester') != '')){
             $cs = $request->input('code_student');
             $sm = $request->input('semester');
@@ -98,7 +99,15 @@ class ManageStudentController extends Controller
 
     public function store(StoreStudent $request)
     {
-        $user = Student::create($request->all());
+        $student = new Student();
+        $student->code_student = $request->code_student;
+        $student->password = bcrypt($request->password);
+        $student->name = $request->name;
+        $student->year_of_birth = $request->year_of_birth;
+        $student->address = $request->address;
+        $student->code_class = $request->code_class;
+        $student->email = $request->email ;
+        $student->save();
 
         return redirect(route('homeAdmin'));
     }
