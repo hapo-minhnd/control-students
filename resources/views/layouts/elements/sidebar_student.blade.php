@@ -9,7 +9,7 @@
 
             </div>
             <div class="pull-left info">
-                <p>teacher</p>
+                  <p>Student</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>

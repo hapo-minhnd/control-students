@@ -6,15 +6,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
             </div>
             <div class="pull-left info">
-                   @if (Session::has('user'))
-                        ok
-                    @else
-                        not done
-                    @endif
-                <!-- Status -->
+                <p>Admin</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -67,7 +62,7 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('create_Member')}}">Tạo xóa tài khoản sinh viên</a></li>
+                    <li><a href="{{route('get_create_student')}}">Tạo xóa tài khoản sinh viên</a></li>
                     <li><a href="{{route('create_Member')}}">Tạo xóa tài giáo viên</a></li>
                 </ul>
             </li>

@@ -6,9 +6,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class Admin extends Authenticatable
+class teacher extends Authenticatable
 {
-    protected $table = 'admin';
+    protected $table = 'teacher';
     use Notifiable;
 
     /**
@@ -17,7 +17,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'code_teacher', 'password', 'name_teacher', 'subject', 'gender', 'telephone_number', 'email',
     ];
 
     /**
@@ -28,18 +28,7 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    /**
-     * @param $request
-     */
-    public static function create($request)
-    {
-    }
-
-    /**
-     * @param $password
-     */
-    public function setPassword($password)
+    public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
     }

@@ -5687,3 +5687,25 @@ table{
   width: 100%;
   text-align: center;
 }
+.location{
+  position: relative;
+  width: auto;
+}
+.control-location{
+  position: absolute;
+  top: 0;
+  margin-left: 0;
+}
+.boder-none{
+  border: 1px solid white;
+  border-color: rgba(255, 0, 0, 0);
+}
+.none{
+  border: 1px solid white;
+  border-color: rgba(255, 0, 0, 0);
+  background-color: rgba(255, 0, 0, 0);
+  text-align: center;
+}
+.button-none{
+  display: none;
+}

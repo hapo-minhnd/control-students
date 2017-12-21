@@ -1,14 +1,18 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class Admin extends Authenticatable
+/**
+ * Class Student
+ * @package App\Http\Models
+ */
+class Student extends Authenticatable
 {
-    protected $table = 'admin';
+    protected $table = 'student';
     use Notifiable;
 
     /**
@@ -17,7 +21,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'code_student', 'password', 'name', 'year_of_birth', 'address', 'code_class', 'email',
     ];
 
     /**
@@ -28,13 +32,6 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    /**
-     * @param $request
-     */
-    public static function create($request)
-    {
-    }
 
     /**
      * @param $password

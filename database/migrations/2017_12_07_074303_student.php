@@ -4,25 +4,28 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminTable extends Migration
+class Student extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+    /*public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('student', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('email')->unique();
+            $table->string('code_student')->unique();
             $table->string('password');
+            $table->string('name');
+            $table->string('Year_of_birth');
+            $table->string('address');
+            $table->string('code_class');
+            $table->string('email');
             $table->rememberToken();
             $table->timestamps();
         });
-    }
+    }*/
 
     /**
      * Reverse the migrations.
@@ -31,6 +34,6 @@ class CreateAdminTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('student');
     }
 }
