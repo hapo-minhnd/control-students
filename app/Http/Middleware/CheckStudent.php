@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Admin;
+use App\Models\Student;
 use Closure;
 use Auth;
 
-class CheckAdmin
+class CheckStudent
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,12 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('admin')->check())
+        if (Auth::guard('student')->check())
         {
             return $next($request);
         }
-         else {
-             return redirect('admin/login');
-         }
+        else {
+            return redirect('student/login');
+        }
     }
 }

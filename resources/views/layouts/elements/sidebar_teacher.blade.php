@@ -71,7 +71,7 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('log_Out_Member')}}">Thoát tài khoản</a></li>
+                    <li><a >Thoát tài khoản</a></li>
                 </ul>
             </li>
         </ul>

@@ -1,25 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\student;
+namespace App\Http\Controllers\teacher;
 
 use App\Http\Requests\LoginStudent;
+use App\Http\Requests\LoginTeacher;
 use App\Models\Admin;
 use App\Models\Student;
+use App\Models\Teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginPost;
 use Auth;
-use Illuminate\Support\Facades\App;
-
-class StudentController extends Controller
+class TeacherController extends Controller
 {
 
-    public function __construct()
-    {
-        return $this->middleware('guest');
-    }
-
-    public function homeStudent()
+    public function homeTeacher()
     {
         return view('student.teacher_home');
     }
@@ -40,35 +35,39 @@ class StudentController extends Controller
     public function login()
     {
         {
-            return view('student.login');
+            return view('teacher.login');
         }
     }
 
     /**
      * StudentController constructor.
      */
+    public function __construct()
+    {
+        return $this->middleware('guest');
+    }
 
     /**
      * @return mixed
      */
     protected function guard()
     {
-        return Auth::guard('student');
+        return Auth::guard('teacher');
     }
 
     /**
      * @param LoginPost $request
      * @return $this|\Illuminate\Http\RedirectResponse
      */
-    public function LoginStudent(LoginStudent $request)
+    public function LoginTeacher(LoginTeacher $request)
     {
-
-        $code_student = $request->input('code_student');
+        $code_teacher = $request->input('code_teacher');
         $password = $request->input('password');
-        if (Auth::guard('student')->attempt(['code_student' => $code_student, 'password' => $password, 'active' => 1])) {
-            return redirect()->intended('student/home');
+        if (Auth::guard('teacher')->attempt(['code_teacher' => $code_teacher, 'password' => $password, 'active' => 1])) {
+            dd(1);
+            return redirect()->intended('teacher/home');
         }
-        else if (Auth::guard('student')->attempt(['code_student' => $code_student, 'password' => $password])) {
+        else if (Auth::guard('teacher')->attempt(['code_teacher' => $code_teacher, 'password' => $password])) {
             dd('pls check mail');
         }
         else {
@@ -102,7 +101,7 @@ class StudentController extends Controller
     }
     public function verify($token)
     {
-        Student::where('email_token', $token)->firstOrFail()->verified();
-        return redirect()->route('login_Student')->with('success', 'Your account has been activated');
+        Teacher::where('email_token', $token)->firstOrFail()->verified();
+        return redirect()->route('login_teacher')->with('success', 'Your account has been activated');
     }
 }

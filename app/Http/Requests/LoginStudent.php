@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginPost extends FormRequest
+class LoginStudent extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,15 @@ class LoginPost extends FormRequest
     public function rules()
     {
         return [
-            'email' =>'required',
+            'code_student' =>'required',
             'password' => 'required|min:8',
-
         ];
+        dd($this->request());
     }
     public function messages()
     {
         return [
-            'email.required' => trans('customer.email.required'),
+            'code_student.required' => trans('customer.code_student.required'),
             'password.required' => trans('customer.email.psw_required'),
             'password.min' => trans('customer.email.psw_min'),
 

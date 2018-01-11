@@ -1,18 +1,14 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-/**
- * Class Student
- * @package App\Http\Models
- */
-class PointSubject extends Authenticatable
+class Teacher extends Authenticatable
 {
-    protected $table = 'subject_point';
+    protected $table = 'teacher';
     use Notifiable;
 
     /**
@@ -21,7 +17,7 @@ class PointSubject extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'code_student', 'name', 'code_subject', 'point', 'semester'
+        'code_teacher', 'password', 'name_teacher', 'subject', 'gender', 'telephone_number', 'email', "active"
     ];
 
     /**
@@ -32,12 +28,10 @@ class PointSubject extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    /**
-     * @param $password
-     */
-    public function setPassword($password)
+    public function verified()
     {
-        $this->attributes['password'] = bcrypt($password);
+        $this->active = 1;
+        $this->email_token = null;
+        $this->save();
     }
 }

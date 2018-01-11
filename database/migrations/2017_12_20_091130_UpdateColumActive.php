@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateColumPoint extends Migration
+class UpdateColumActive extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateColumPoint extends Migration
      */
     public function up()
     {
-        Schema::table('subject_point', function (Blueprint $table) {
-            $table->string('point')->nullable();
+        Schema::table('student', function (Blueprint $table) {
+            $table->enum('active', ['1', '0'])->default('0');
         });
     }
 

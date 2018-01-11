@@ -63,7 +63,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('get_create_student')}}">Tạo xóa tài khoản sinh viên</a></li>
-                    <li><a href="{{route('create_Member')}}">Tạo xóa tài giáo viên</a></li>
+                    <li><a href="{{route('get_create_teacher')}}">Tạo xóa tài giáo viên</a></li>
                 </ul>
             </li>
             <li class="treeview admin">

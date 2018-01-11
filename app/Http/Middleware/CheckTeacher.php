@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Teacher;
 use Closure;
 use Auth;
 
-class CheckMember
+class CheckTeacher
 {
     /**
      * Handle an incoming request.
@@ -16,12 +17,12 @@ class CheckMember
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check())
+        if (Auth::guard('teacher')->check())
         {
             return $next($request);
         }
         else {
-            return redirect('login');
+            return redirect('teacher/login');
         }
     }
 }
