@@ -86,11 +86,9 @@ class AdminController extends Controller
      */
     public function postLogin(LoginPost $request)
     {
-
         $email = $request->input('email');
         $password = $request->input('password');
         if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password])) {
-            $request->session()->put('user', 'admin');
             return redirect()->intended('admin/home');
         } else {
             return redirect()->back()->withErrors(['errorlogin' => trans('customer.error.login')]);

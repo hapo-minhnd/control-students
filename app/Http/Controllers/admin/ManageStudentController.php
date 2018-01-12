@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Models\PointSubject;
+use App\Models\PointSubject;
 use App\Http\Requests\UpdatePoint;
 use App\Http\Requests\StoreStudent;
-use App\Http\Models\Student;
+use App\Models\Student;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateStudent;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailActiveStudent;
+
 class ManageStudentController extends Controller
 {
     /**
@@ -19,7 +22,6 @@ class ManageStudentController extends Controller
     {
         return $this->middleware('guest');
     }
-
     /**
      * @return mixed
      */
@@ -47,24 +49,25 @@ class ManageStudentController extends Controller
     public function indexPoint(Request $request)
     {
         /*dd( Auth::guard('admin')->user()->id);*/
+
         if(($request->input('code_student') != '') && ($request->input('semester') != '')){
             $cs = $request->input('code_student');
             $sm = $request->input('semester');
-            $pointSubjects = \App\Http\Models\pointSubject::where('code_student' , 'like', "%{$cs}%")->Where('semester' , 'like', "%{$sm}%")->paginate(5);
+            $pointSubjects =pointSubject::where('code_student' , 'like', "%{$cs}%")->Where('semester' , 'like', "%{$sm}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
         else if($request->input('code_student') != ''){
             $cs = $request->input('code_student');
-            $pointSubjects = \App\Http\Models\pointSubject::where('code_student' , 'like', "%{$cs}%")->paginate(5);
+            $pointSubjects = pointSubject::where('code_student' , 'like', "%{$cs}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
         else if($request->input('semester') != ''){
             $sm = $request->input('semester');
-            $pointSubjects = \App\Http\Models\pointSubject::Where('semester' , 'like', "%{$sm}%")->paginate(5);
+            $pointSubjects = pointSubject::Where('semester' , 'like', "%{$sm}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
         else{
-            $pointSubjects = \App\Http\Models\pointSubject::paginate(5);
+            $pointSubjects = pointSubject::paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
     }
@@ -97,6 +100,7 @@ class ManageStudentController extends Controller
     }
 
 
+
     public function store(StoreStudent $request)
     {
         $student = new Student();
@@ -107,8 +111,10 @@ class ManageStudentController extends Controller
         $student->address = $request->address;
         $student->code_class = $request->code_class;
         $student->email = $request->email ;
+        $student->email_token = str_random(20);
         $student->save();
-
+        $email = new EmailActiveStudent($student);
+        Mail::to($student)->send($email);
         return redirect(route('homeAdmin'));
     }
     public function updateStudent(UpdateStudent $request, $id)
@@ -125,16 +131,21 @@ class ManageStudentController extends Controller
     public function storePoint(UpdatePoint $request)
     {
         $user = PointSubject::create($request->all());
-        return redirect(route('update_score'));
+        return redirect(route('sreach_score'));
     }
     public function updatePoint(UpdatePoint $request, $id)
     {
-        $pointSubject = \App\Http\Models\pointSubject::findOrFail($id);
+        $pointSubject = \App\Models\pointSubject::findOrFail($id);
         $pointSubject->code_student = $request->code_student;
         $pointSubject->name = $request->name;
         $pointSubject->point = $request->point;
         $pointSubject->semester = $request->semester;
         $pointSubject->save();
-        return redirect(route('update_score'));
+        return redirect(route('sreach_score'));
+    }
+    public function SendEmail(StoreStudent $request){
+        $student = new Student();
+        $email = new EmailActiveStudent($student);
+        Mail::to($student)->send($email);
     }
 }
