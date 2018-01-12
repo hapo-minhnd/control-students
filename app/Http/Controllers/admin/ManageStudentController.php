@@ -53,21 +53,21 @@ class ManageStudentController extends Controller
         if(($request->input('code_student') != '') && ($request->input('semester') != '')){
             $cs = $request->input('code_student');
             $sm = $request->input('semester');
-            $pointSubjects = \App\Models\pointSubject::where('code_student' , 'like', "%{$cs}%")->Where('semester' , 'like', "%{$sm}%")->paginate(5);
+            $pointSubjects =pointSubject::where('code_student' , 'like', "%{$cs}%")->Where('semester' , 'like', "%{$sm}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
         else if($request->input('code_student') != ''){
             $cs = $request->input('code_student');
-            $pointSubjects = \App\Models\pointSubject::where('code_student' , 'like', "%{$cs}%")->paginate(5);
+            $pointSubjects = pointSubject::where('code_student' , 'like', "%{$cs}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
         else if($request->input('semester') != ''){
             $sm = $request->input('semester');
-            $pointSubjects = \App\Models\pointSubject::Where('semester' , 'like', "%{$sm}%")->paginate(5);
+            $pointSubjects = pointSubject::Where('semester' , 'like', "%{$sm}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
         else{
-            $pointSubjects = \App\Models\pointSubject::paginate(5);
+            $pointSubjects = pointSubject::paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
     }
