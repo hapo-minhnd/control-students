@@ -60,6 +60,6 @@ class Kernel extends HttpKernel
         'admin' =>\App\Http\Middleware\CheckAdmin::class,
         'student' =>\App\Http\Middleware\CheckStudent::class,
         'teacher' =>\App\Http\Middleware\CheckTeacher::class,
-
+        'uppoint' =>\App\Http\Middleware\CheckUpPoint::class,
     ];
 }

@@ -2,17 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-
-/**
- * Class Student
- * @package App\Http\Models
- */
-class PointSubject extends Authenticatable
+class Subject extends Model
 {
-    protected $table = 'subject_point';
     use Notifiable;
 
     /**
@@ -21,7 +14,7 @@ class PointSubject extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'code_student',  'code_class', 'point'
+        'code_subject', 'name_subject'
     ];
 
     /**
@@ -30,7 +23,7 @@ class PointSubject extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
     /**

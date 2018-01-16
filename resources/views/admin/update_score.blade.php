@@ -20,8 +20,8 @@
                 <div class="form-group">
                     <label for="code_student">Search( MSSV):</label>
                     <input type="text" class="form-control" id="code_student_enter" name="code_student">
-                    <label for="code_student">Search( semester):</label>
-                    <input type="text" class="form-control" id="semester" name="semester">
+                    <label for="code_student">Search( code class):</label>
+                    <input type="text" class="form-control" id="code_class" name="code_class">
                 </div>
                 <div class="form-group">
                     <button style="cursor:pointer" type="submit" class="btn btn-primary">Submit</button>
@@ -30,10 +30,8 @@
             <table>
                 <tr>
                     <th>MSSV</th>
-                    <th>Name</th>
-                    <th>code subject</th>
+                    <th>code class</th>
                     <th>Point</th>
-                    <th>semester</th>
                 <tr>
                 @foreach(  $pointSubjects as $pointSubject)
                     <tr>
@@ -42,14 +40,10 @@
                             {{ csrf_field() }}
                             <td><input type="text" class="form-control check none" id="code_student" name="code_student"
                                        value="{{ $pointSubject->code_student }}"></td>
-                            <td><input type="text" class="form-control check none" id="name" name="name"
-                                       value="{{ $pointSubject->name }}"></td>
-                            <td><input type="text" class="form-control check none" id="code_subject"
-                                       name="code_subject" value="{{ $pointSubject->code_subject }}"></td>
+                            <td><input type="text" class="form-control check none" id="code_class"
+                                       name="code_class" value="{{ $pointSubject->code_class }}"></td>
                             <td><input type="text" class="form-control check none" id="point"
                                        name="point" value="{{ $pointSubject->point }}"></td>
-                            <td><input type="text" class="form-control check none" id="semester" name="semester"
-                                       value="{{ $pointSubject->semester }}"></td>
                             <td class=" none">
                                 <button style="cursor:pointer" type="submit" class="btn btn-primary button-none">
                                     Submit
@@ -63,14 +57,10 @@
                         {{ csrf_field() }}
                         <td><input type="text" class="form-control " id="code_student" name="code_student"
                                    ></td>
-                        <td><input type="text" class="form-control " id="name" name="name"
-                                   ></td>
-                        <td><input type="text" class="form-control " id="code_subject"
-                                   name="code_subject" ></td>
+                        <td><input type="text" class="form-control " id="code_class"
+                                   name="code_class" ></td>
                         <td><input type="text" class="form-control " id="point"
                                    name="point" ></td>
-                        <td><input type="text" class="form-control " id="semester" name="semester"
-                                   "></td>
                         <td class="none">
                             <button style="cursor:pointer" type="submit" class="btn btn-primary">
                                 Submit

@@ -25,8 +25,7 @@ class UpdatePoint extends FormRequest
     {
         return [
             'code_student' =>'required|max:12',
-            'name' => 'required|max:100',
-            'code_subject' => 'required|max:100',
+            'code_class' => 'required|max:100',
             'point' => 'max:100',
         ];
     }

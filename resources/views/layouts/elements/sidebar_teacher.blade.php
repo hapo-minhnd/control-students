@@ -10,7 +10,6 @@
             </div>
             <div class="pull-left info">
                 <p>teacher</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
 
@@ -38,7 +37,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="#">Kiểm tra thông tin</a></li>
-                    <li><a href="#">Cập nhật điểm</a></li>
+                    <li><a href="{{route('teacher_update_score')}}">Cập nhật điểm</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -49,7 +48,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="#">Thông tin</a></li>
-                    <li><a href="#">Lịch làm việc</a></li>
+                    <li><a href={{route('teacher_class')}}>Đăng kí lớp</a></li>
                     <li><a href="#">Cập nhật thông tin</a></li>
                 </ul>
             </li>
@@ -71,7 +70,7 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a >Thoát tài khoản</a></li>
+                    <li><a href="{{route('log_out_teacher')}}">Thoát tài khoản</a></li>
                 </ul>
             </li>
         </ul>

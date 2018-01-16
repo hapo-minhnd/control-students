@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginPost;
 use Auth;
+use App\Models\ClassStudent;
 use Illuminate\Mail\Message;
 use Illuminate\Support\MessageBag;
 
@@ -115,5 +116,27 @@ class AdminController extends Controller
 
         return redirect()->to('welcome');
     }
-
+    public function indexClass(request $request){
+        $ClassStudents = ClassStudent::all();
+        return view('admin.update_class', ['ClassStudents' => $ClassStudents]);
+    }
+    public function updateClass(Request $request, $id){
+        $classSubject = ClassStudent::findOrFail($id);
+        $classSubject->code_class = $request->code_class;
+        $classSubject->name_class = $request->name_class;
+        $classSubject->code_subject = $request->code_subject;
+        $classSubject->code_teacher = $request->code_teacher;
+        $classSubject->save();
+        return redirect()->back();
+    }
+    public function storeClass(Request $request)
+    {
+        $classSubject = new ClassStudent();
+        $classSubject->code_class = $request->code_class;
+        $classSubject->name_class = $request->name_class;
+        $classSubject->code_subject = $request->code_subject;
+        $classSubject->code_teacher = $request->code_teacher;
+        $classSubject->save();
+        return redirect()->back();
+    }
 }

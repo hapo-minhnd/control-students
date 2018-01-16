@@ -21,7 +21,7 @@ class StudentController extends Controller
 
     public function homeStudent()
     {
-        return view('student.teacher_home');
+        return view('student.student_home');
     }
 
     /**
