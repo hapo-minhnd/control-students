@@ -16,6 +16,7 @@
                     <th>Tên lớp</th>
                     <th>Mã môn</th>
                     <th>Giáo viên</th>
+                    <th>Học kỳ</th>
                 <tr>
                 @foreach(  $ClassStudents as $classSubject)
                     <tr>
@@ -30,6 +31,8 @@
                                        value="{{ $classSubject->code_subject }}"></td>
                             <td><input type="text" class="form-control check none" id="code_teacher" name="code_teacher"
                                        value="{{ $classSubject->code_teacher }}"></td>
+                            <td><input type="text" class="form-control check none" id="semester" name="semester"
+                                       value="{{ $classSubject->semester }}"></td>
                             <td class=" none">
                                 <button style="cursor:pointer" type="submit" class="btn btn-primary button-none">
                                     Submit
@@ -49,6 +52,8 @@
                                    name="code_subject" ></td>
                         <td><input type="text" class="form-control " id="code_teacher"
                                    name="code_teacher" ></td>
+                        <td><input type="text" class="form-control " id="semester"
+                                   name="semester" ></td>
                         <td class="none">
                             <button style="cursor:pointer" type="submit" class="btn btn-primary">
                                 Submit

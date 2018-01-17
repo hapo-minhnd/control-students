@@ -20,6 +20,10 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
         route::get('/update_class', 'AdminController@indexClass')->name('update_class');
         route::put('/update_class/{id}', 'AdminController@UpdateClass')->name('update_class_admin');
         route::post('/create/class', 'AdminController@storeClass')->name('create_class');
+        route::get('/check_point', 'AdminController@indexPick')->name('admin_check_point');
+        route::get('/check_point/search', 'AdminController@searchPoint')->name('search_statistic_score');
+        route::get('/check_point/{id}', 'AdminController@pickClass')->name('pick_class_point');
+
     });
 });
 Route::group(['namespace' => 'student', 'prefix' => 'student'], function (){

@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginPost;
 use Auth;
 use App\Models\ClassStudent;
+use App\Models\PointSubject;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Mail\Message;
 use Illuminate\Support\MessageBag;
 
@@ -126,6 +128,7 @@ class AdminController extends Controller
         $classSubject->name_class = $request->name_class;
         $classSubject->code_subject = $request->code_subject;
         $classSubject->code_teacher = $request->code_teacher;
+        $classSubject->semester = $request->semester;
         $classSubject->save();
         return redirect()->back();
     }
@@ -136,7 +139,30 @@ class AdminController extends Controller
         $classSubject->name_class = $request->name_class;
         $classSubject->code_subject = $request->code_subject;
         $classSubject->code_teacher = $request->code_teacher;
+        $classSubject->semester = $request->semester;
         $classSubject->save();
         return redirect()->back();
+    }
+    public function indexPick(request $request){
+        $classes = ClassStudent::select('semester')->groupBy('semester')->get();
+        return view('admin.pick_semester', ['classes' => $classes]);
+    }
+    public function pickClass(Request $request, $id){
+        $pointSubjects = pointSubject::join('classes', 'classes.code_class', '=' ,'subject_point.code_class')
+            ->select('code_student', 'semester', DB::raw('avg(point) as point'))
+            ->where('semester', $id)
+            ->groupBy('code_student', 'semester')
+            ->orderby('point', 'desc')
+            ->get();
+        return view('admin.statistic_score', ['pointSubjects' => $pointSubjects]);
+    }
+    public function searchPoint(Request $request){
+        $codeSutdent = $request->input('code_student');
+        $pointSubjects = pointSubject::join('classes', 'classes.code_class', '=' ,'subject_point.code_class')
+            ->select('code_student', 'semester', DB::raw('avg(point) as point'))
+            ->where('code_student', $codeSutdent)
+            ->groupBy('code_student', 'semester')
+            ->get();
+        return view('admin.statistic_score', ['pointSubjects' => $pointSubjects]);
     }
 }
