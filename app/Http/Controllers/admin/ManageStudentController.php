@@ -50,24 +50,24 @@ class ManageStudentController extends Controller
     {
         /*dd( Auth::guard('admin')->user()->id);*/
 
-        if(($request->input('code_student') != '') && ($request->input('code_class') != '')){
+        if(($request->has('code_student')) && ($request->has('code_class'))){
             $cs = $request->input('code_student');
             $sm = $request->input('code_class');
-            $pointSubjects =pointSubject::where('code_student' , 'like', "%{$cs}%")->Where('code_class' , 'like', "%{$sm}%")->paginate(5);
+            $pointSubjects =PointSubject::where('code_student' , 'like', "%{$cs}%")->Where('code_class' , 'like', "%{$sm}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
-        else if($request->input('code_student') != ''){
+        else if(($request->has('code_student'))){
             $cs = $request->input('code_student');
-            $pointSubjects = pointSubject::where('code_student' , 'like', "%{$cs}%")->paginate(5);
+            $pointSubjects = PointSubject::where('code_student' , 'like', "%{$cs}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
-        else if($request->input('code_class') != ''){
+        else if(($request->has('code_class'))){
             $sm = $request->input('code_class');
-            $pointSubjects = pointSubject::Where('code_class' , 'like', "%{$sm}%")->paginate(5);
+            $pointSubjects = PointSubject::Where('code_class' , 'like', "%{$sm}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
         else{
-            $pointSubjects = pointSubject::paginate(5);
+            $pointSubjects = PointSubject::paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
     }
@@ -117,7 +117,7 @@ class ManageStudentController extends Controller
         Mail::to($student)->send($email);
         return redirect()->route('homeAdmin');
     }
-    public function updateStudent(UpdateStudent $request, $id)
+    public function update(UpdateStudent $request, $id)
     {
             $student = Student::findOrFail($id);
             $student->code_student = $request->code_student;

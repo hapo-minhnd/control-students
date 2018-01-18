@@ -13,9 +13,9 @@ class RenameColum extends Migration
      */
     public function up()
     {
-        /*Schema::table('subject_point', function (Blueprint $table) {
+        Schema::table('subject_point', function (Blueprint $table) {
             $table->dropColumn('name');
-        });*/
+        });
     }
 
     /**

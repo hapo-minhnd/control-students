@@ -13,10 +13,10 @@ class CoLumnCodeClass extends Migration
      */
     public function up()
     {
-/*        Schema::table('subject_point', function (Blueprint $table) {
+        Schema::table('subject_point', function (Blueprint $table) {
             $table->dropColumn('code_subject');
             $table->string('code_class')->nullable();
-        });*/
+        });
     }
 
     /**

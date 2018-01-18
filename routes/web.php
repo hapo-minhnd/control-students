@@ -8,7 +8,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
         Route::get('/', 'AdminController@home')->name('homeAdmin');
         Route::get('/info', 'ManageStudentController@index')->name('info_Member');
         Route::get('/info/sreach', 'ManageStudentController@index')->name('sreach_student');
-        Route::put('/info/{id}', 'ManageStudentController@updateStudent')->name('update_student');
+        Route::put('/info/{id}', 'ManageStudentController@update')->name('update_student');
         Route::get('/update_info', 'AdminController@updateInfo')->name('update_info_Member');
         Route::get('/update_score/sreach', 'ManageStudentController@indexPoint')->name('sreach_score');
         Route::put('/update_score/{id}', 'ManageStudentController@updatePoint')->name('update_point');

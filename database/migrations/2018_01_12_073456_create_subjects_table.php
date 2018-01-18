@@ -11,16 +11,16 @@ class CreateSubjectsTable extends Migration
      *
      * @return void
      */
-    //public function up()
-    //{
-    //    Schema::create('subjects', function (Blueprint $table) {
-     //       $table->increments('id');
-    //        $table->string('code_subject')->unique();
-    //     $table->string('name_subject');
-    //        $table->rememberToken();
-    //        $table->timestamps();
-    //    });
-    //}
+    public function up()
+    {
+        Schema::create('subjects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('code_subject')->unique();
+            $table->string('name_subject');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
