@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\student;
+namespace App\Http\Controllers\Student;
 
 use App\Http\Requests\LoginStudent;
 use App\Models\Admin;

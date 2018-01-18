@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\teacher;
+namespace App\Http\Controllers\Teacher;
 
 use App\Http\Requests\LoginStudent;
 use App\Http\Requests\LoginTeacher;
