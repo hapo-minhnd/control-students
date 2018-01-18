@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginPost;
 use Auth;
 use Illuminate\Support\Facades\App;
+use App\Http\Requests\LoginTeacher;
+use App\Models\PointSubject;
+use App\Models\Teacher;
+use App\Http\Requests\UpdatePoint;
+use App\Models\ClassStudent;
 
 class StudentController extends Controller
 {
@@ -79,10 +84,10 @@ class StudentController extends Controller
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function logoutAdmin()
+    public function logoutStudent()
     {
-        Auth::guard('admin')->logout();
-        return redirect('admin/login');
+        Auth::guard('student')->logout();
+        return redirect('student/login');
     }
 
     public function store(Request $request)
@@ -104,5 +109,29 @@ class StudentController extends Controller
     {
         Student::where('email_token', $token)->firstOrFail()->verified();
         return redirect()->route('login_Student')->with('success', 'Your account has been activated');
+    }
+    public function indexSemester(Request $request){
+        $classes = ClassStudent::select('semester')->groupBy('semester')->get();
+        return view('student.pick_semester', ['classes' => $classes]);
+    }
+    public function pickSemester(Request $request, $id){
+        $ClassStudents = ClassStudent::where('semester', $id)->get();
+        return view('student.update_class', ['ClassStudents' => $ClassStudents]);
+    }
+    public function UpdateClass(Request $request, $id){
+        $code_student = auth()->guard('student')->user()->code_student;
+        $check = PointSubject::where('code_student', $code_student)->where('code_class', $id)->get();
+        if ($check->count() === 0) {
+            $pointSubject = new PointSubject();
+            $pointSubject->code_student = $request->student;
+            $pointSubject->code_class = $id;
+            $pointSubject->save();
+            return redirect()->back();
+        }
+        else{
+            $pointSubject = PointSubject::findOrFail($check->first()->id);
+            $pointSubject->delete();
+            return redirect()->back();
+        }
     }
 }

@@ -4,7 +4,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Bảng điểm
+                Danh sách lớp:
             </h1>
         </section>
 
@@ -12,11 +12,24 @@
         <section class="content container-fluid">
             <table>
                 <tr>
-                    <th>Mã lớp</th>
-                    <th>Tên lớp</th>
-                    <th>Mã môn</th>
+                    <th>Mã lớp
+                        @if($errors->has('code_class'))
+                            <p class="bg-danger">{{$errors->first('code_class')}}</p>
+                        @endif</th>
+                    <th>Tên lớp
+                        @if($errors->has('name_class'))
+                            <p class="bg-danger">{{$errors->first('name_class')}}</p>
+                        @endif</th>
+                    <th>Mã môn
+                        @if($errors->has('code_subject'))
+                            <p class="bg-danger">{{$errors->first('code_subject')}}</p>
+                        @endif</th>
                     <th>Giáo viên</th>
-                    <th>Học kỳ</th>
+                    <th>Học kỳ
+                        @if($errors->has('semester'))
+                            <p class="bg-danger">{{$errors->first('semester')}}</p>
+                        @endif
+                    </th>
                 <tr>
                 @foreach(  $ClassStudents as $classSubject)
                     <tr>
@@ -24,20 +37,32 @@
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
                             <td><input type="text" class="form-control check none" id="code_class" name="code_class"
-                                       value="{{ $classSubject->code_class }}"></td>
+                                       value="{{ $classSubject->code_class }}">
+
+                            </td>
                             <td><input type="text" class="form-control check none" id="name_class" name="name_class"
-                                       value="{{ $classSubject->name_class }}"></td>
+                                       value="{{ $classSubject->name_class }}">
+
+                            </td>
                             <td><input type="text" class="form-control check none" id="code_subject" name="code_subject"
-                                       value="{{ $classSubject->code_subject }}"></td>
+                                       value="{{ $classSubject->code_subject }}">
+
+                            </td>
                             <td><input type="text" class="form-control check none" id="code_teacher" name="code_teacher"
-                                       value="{{ $classSubject->code_teacher }}"></td>
+                                       value="{{ $classSubject->code_teacher }}">
+                            </td>
                             <td><input type="text" class="form-control check none" id="semester" name="semester"
-                                       value="{{ $classSubject->semester }}"></td>
-                            <td class=" none">
+                                       value="{{ $classSubject->semester }}">
+
+                            </td>
+                            <td class=" none table-none">
                                 <button style="cursor:pointer" type="submit" class="btn btn-primary button-none">
                                     Submit
                                 </button>
                             </td>
+                            <td class=" none"><button style="cursor:pointer" type="submit" class="btn btn-primary button" value="delete" name = "delete"  id="semester">
+                                    Delete
+                                </button></td>
                         </form>
                     </tr>
                 @endforeach

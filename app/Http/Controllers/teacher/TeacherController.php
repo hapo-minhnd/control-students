@@ -80,10 +80,10 @@ class TeacherController extends Controller
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function logoutAdmin()
+    public function logoutTeacher()
     {
-        Auth::guard('admin')->logout();
-        return redirect('admin/login');
+        Auth::guard('teacher')->logout();
+        return redirect('teacher/login');
     }
 
     public function store(Request $request)
@@ -135,5 +135,13 @@ class TeacherController extends Controller
         $classSubject->code_teacher = $request->teacher;
         $classSubject->save();
         return redirect()->back();
+    }
+    public function indexSemester(Request $request){
+        $classes = ClassStudent::select('semester')->groupBy('semester')->get();
+        return view('teacher.pick_semester', ['classes' => $classes]);
+    }
+    public function pickSemester(Request $request, $id){
+        $ClassStudents = ClassStudent::where('semester', $id)->get();
+        return view('teacher.update_class', ['ClassStudents' => $ClassStudents]);
     }
 }

@@ -31,8 +31,4 @@ class ClassStudent extends Authenticatable
     /**
      * @param $password
      */
-    public function PointSubject()
-    {
-        return $this->belongsTo('ClassStudent');
-    }
 }

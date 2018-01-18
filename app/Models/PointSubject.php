@@ -32,10 +32,6 @@ class PointSubject extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function classStudent()
-    {
-        return $this->hasMany('classStudent');
-    }
     /**
      * @param $password
      */

@@ -31,6 +31,6 @@ return array(
         'max' => 'Mã sinh viên quá dài',
     ],
     'code_class' => [
-        'required' => 'Mã lớp là trường bắt buộc',
+        'required' => 'Đây là trường bắt buộc',
     ],
 );
