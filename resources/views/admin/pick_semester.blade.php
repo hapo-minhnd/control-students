@@ -12,7 +12,7 @@
         <!-- Main content -->
         <section class="content container-fluid">
             @foreach( $classes as $classStudent)
-                <form method="get" action="{{route('pick_class_point', $classStudent->semester)}}" id="form-check">
+                <form method="get" action="{{route('pick_class_point', $classStudent->semester)}}" id="form-check" class="col-sm-1">
                     {{ csrf_field() }}
                     @if ($classStudent->semester  == null)
                     @else
