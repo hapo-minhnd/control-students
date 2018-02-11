@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreTeacher;
 use App\Mail\EmailActiveTeacher;
 use App\Models\Admin;
+use App\Models\ClassStudent;
 use App\Models\Teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -32,4 +33,5 @@ class ManageTeacherController extends Controller
         Mail::to($teacher)->send($email);
         return redirect(route('homeAdmin'));
     }
+
 }

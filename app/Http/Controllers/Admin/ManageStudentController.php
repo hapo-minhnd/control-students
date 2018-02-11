@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\PointSubject;
 use App\Http\Requests\UpdatePoint;
@@ -50,24 +50,24 @@ class ManageStudentController extends Controller
     {
         /*dd( Auth::guard('admin')->user()->id);*/
 
-        if(($request->input('code_student') != '') && ($request->input('semester') != '')){
+        if(($request->has('code_student')) && ($request->has('code_class'))){
             $cs = $request->input('code_student');
-            $sm = $request->input('semester');
-            $pointSubjects =pointSubject::where('code_student' , 'like', "%{$cs}%")->Where('semester' , 'like', "%{$sm}%")->paginate(5);
+            $sm = $request->input('code_class');
+            $pointSubjects =PointSubject::where('code_student' , 'like', "%{$cs}%")->Where('code_class' , 'like', "%{$sm}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
-        else if($request->input('code_student') != ''){
+        else if(($request->has('code_student'))){
             $cs = $request->input('code_student');
-            $pointSubjects = pointSubject::where('code_student' , 'like', "%{$cs}%")->paginate(5);
+            $pointSubjects = PointSubject::where('code_student' , 'like', "%{$cs}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
-        else if($request->input('semester') != ''){
-            $sm = $request->input('semester');
-            $pointSubjects = pointSubject::Where('semester' , 'like', "%{$sm}%")->paginate(5);
+        else if(($request->has('code_class'))){
+            $sm = $request->input('code_class');
+            $pointSubjects = PointSubject::Where('code_class' , 'like', "%{$sm}%")->paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
         else{
-            $pointSubjects = pointSubject::paginate(5);
+            $pointSubjects = PointSubject::paginate(5);
             return view('admin.update_score', ['pointSubjects' => $pointSubjects]);
         }
     }
@@ -115,9 +115,9 @@ class ManageStudentController extends Controller
         $student->save();
         $email = new EmailActiveStudent($student);
         Mail::to($student)->send($email);
-        return redirect(route('homeAdmin'));
+        return redirect()->route('homeAdmin');
     }
-    public function updateStudent(UpdateStudent $request, $id)
+    public function update(UpdateStudent $request, $id)
     {
             $student = Student::findOrFail($id);
             $student->code_student = $request->code_student;
@@ -131,17 +131,16 @@ class ManageStudentController extends Controller
     public function storePoint(UpdatePoint $request)
     {
         $user = PointSubject::create($request->all());
-        return redirect(route('sreach_score'));
+        return redirect()->route('sreach_score');
     }
     public function updatePoint(UpdatePoint $request, $id)
     {
         $pointSubject = \App\Models\pointSubject::findOrFail($id);
         $pointSubject->code_student = $request->code_student;
-        $pointSubject->name = $request->name;
+        $pointSubject->code_class = $request->code_class;
         $pointSubject->point = $request->point;
-        $pointSubject->semester = $request->semester;
         $pointSubject->save();
-        return redirect(route('sreach_score'));
+        return redirect()->back();
     }
     public function SendEmail(StoreStudent $request){
         $student = new Student();

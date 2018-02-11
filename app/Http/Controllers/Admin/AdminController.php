@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreStudent;
 use App\Models\Admin;
@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginPost;
 use Auth;
+use App\Models\ClassStudent;
+use App\Models\PointSubject;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Mail\Message;
 use Illuminate\Support\MessageBag;
 
@@ -116,4 +119,18 @@ class AdminController extends Controller
         return redirect()->to('welcome');
     }
 
+    public function indexPick(request $request){
+        $classes = ClassStudent::select('semester')->groupBy('semester')->get();
+        return view('admin.pick_semester', ['classes' => $classes]);
+    }
+
+    public function searchPoint(Request $request){
+        $codeSutdent = $request->input('code_student');
+        $pointSubjects = PointSubject::join('classes', 'classes.code_class', '=' ,'subject_point.code_class')
+            ->select('code_student', 'semester', DB::raw('avg(point) as point'))
+            ->where('code_student', $codeSutdent)
+            ->groupBy('code_student', 'semester')
+            ->get();
+        return view('admin.statistic_score', ['pointSubjects' => $pointSubjects]);
+    }
 }
