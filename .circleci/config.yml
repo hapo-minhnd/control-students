@@ -29,6 +29,4 @@ jobs:
           paths:
             - node_modules
       - run: npm install
-      - run: npm run watch
       - run: composer install
-      - run: php artisan serve
