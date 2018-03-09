@@ -28,6 +28,7 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run: touch storage/testing.sqlite
-      - run: ./vendor/bin/codecept build
-      - run: ./vendor/bin/codecept run
+      - run: npm install
+      - run: npm run watch
+      - run: composer install
+      - run: php artisan serve
