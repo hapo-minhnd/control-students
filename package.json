@@ -19,7 +19,10 @@
         "vue": "^2.1.10"
     },
     "dependencies": {
+        "css-loader": "^0.28.11",
+        "gentelella": "^1.4.0",
         "save": "^2.3.2",
-        "ssri": "^5.2.4"
+        "ssri": "^5.2.4",
+        "style-loader": "^0.21.0"
     }
 }

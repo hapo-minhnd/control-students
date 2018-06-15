@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ColumCodeTeacher extends Migration
+class CreateColumnEmailToken extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class ColumCodeTeacher extends Migration
      */
     public function up()
     {
-        Schema::table('classes', function (Blueprint $table) {
-            $table->string('code_teacher')->nullable();
-        });
+      Schema::table('student', function (Blueprint $table) {
+        $table->string('email_token');
+      });
     }
 
     /**

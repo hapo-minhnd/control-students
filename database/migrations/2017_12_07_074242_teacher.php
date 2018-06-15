@@ -11,7 +11,7 @@ class Teacher extends Migration
      *
      * @return void
      */
-   /* public function up()
+   public function up()
     {
         Schema::create('teacher', function (Blueprint $table) {
             $table->increments('id');
@@ -25,7 +25,7 @@ class Teacher extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-    }*/
+    }
 
     /**
      * Reverse the migrations.

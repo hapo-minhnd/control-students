@@ -3,7 +3,7 @@
     <!-- Logo -->
     <h1 class="logo" style="padding: 0; margin: 0">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>QLHS</span>
+        <span class="logo-mini"><b style="color: red">BK</b></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>Quản lý học sinh</b></span>
     </h1>
@@ -32,7 +32,7 @@
                                     <a href="#">
                                         <div class="pull-left">
                                             <!-- User Image -->
-                                            div>
+                                            </div>
                                         <!-- Message title and timestamp -->
                                         <h4>
                                             Support Team
@@ -116,24 +116,42 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
+                        <img src="/img/admin.jpg" class="user-image">
+                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                        @if (Auth::guard('admin')->check())
+                            <span class="hidden-xs">{{Auth::guard('admin')->user()->name}}</span>
+                        @elseif (Auth::guard('teacher')->check())
+                            <span class="hidden-xs">{{Auth::guard('teacher')->user()->name_teacher}}</span>
+                        @elseif (Auth::guard('student')->check())
+                            <span class="hidden-xs">{{Auth::guard('student')->user()->name}}</span>
+                        @endif
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
+                            <img src="/img/admin.jpg" class="img-circle" alt="User Image">
 
-
+                            <p>
+                                @if (Auth::guard('teacher')->check())
+                                    <span class="hidden-xs">{{Auth::guard('teacher')->user()->name_teacher}}</span> - Teacher
+                                @elseif (Auth::guard('student')->check())
+                                    <span class="hidden-xs">{{Auth::guard('student')->user()->name}}</span> - Student
+                                @elseif (Auth::guard('admin')->check())
+                                    <span class="hidden-xs">{{Auth::guard('admin')->user()->name}}</span> - Web Developer
+                                @endif
+                            </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
                             <div class="row">
                                 <div class="col-xs-4 text-center">
-
+                                    <a href="#">Followers</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-
+                                    <a href="#">Sales</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-
+                                    <a href="#">Friends</a>
                                 </div>
                             </div>
                             <!-- /.row -->
@@ -141,10 +159,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-
+                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

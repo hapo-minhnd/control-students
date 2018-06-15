@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateSubjectPointTable extends Migration
+class AddColumnPoint extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class UpdateSubjectPointTable extends Migration
      */
     public function up()
     {
-        Schema::table('subject_point', function (Blueprint $table) {
-            $table->string('point');
-        });
+      Schema::table('subject_point', function (Blueprint $table) {
+        $table->string('point')->nullable();
+      });
     }
 
     /**
