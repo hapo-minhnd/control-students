@@ -19,18 +19,19 @@
                 </div>
             </div>
             </form>
-            <table>
+            <table class="table table-bordered table-striped dataTable">
                 <tr>
-                    <th>MSSV</th>
-                    <th>AVG point</th>
-                    <th>semester</th>
+                    <th>Mã số sinh viên</th>
+                    <th>Điểm trung bình</th>
+                    <th>Học kì</th>
+                    <th>Tổng số môn học</th>
                 <tr>
                 @foreach(  $pointSubjects as $pointSubject)
                     <tr>
                         <td><p>{{$pointSubject->code_student}}</p></td>
-                        <td><p>{{$pointSubject->point}}</p></td>
+                        <td><p>{{$pointSubject->avgpoint}}</p></td>
                         <td><p>{{$pointSubject->semester}}</p></td>
-                        </form>
+                        <td><p>{{$pointSubject->die}}</p></td>
                     </tr>
                 @endforeach
             </table>

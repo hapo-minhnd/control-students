@@ -28,13 +28,15 @@
 
     @yield('content')
 
+
     @include('layouts.elements.control-sidebar')
 
 </div>
-<script src="{{ asset('layouts/js/jquery-3.1.1.min.js') }}"></script>
-<script src="{{ asset('layouts/js/bootstrap.js') }}"></script>
-<script src="{{ asset('layouts/js/adminlte.js') }}"></script>
-<script src="{{ asset('layouts/js/admin.js') }}"></script>
-<script src="{{ asset('layouts/js/custormer.js') }}"></script>
+<script type="text/javascript" src="{{ asset('layouts/js/jquery-3.1.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('layouts/js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('layouts/js/adminlte.js') }}"></script>
+<script type="text/javascript" src="{{ asset('layouts/js/admin.js') }}"></script>
+<script type="text/javascript" src="{{ asset('layouts/js/custormer.js') }}"></script>
+    @yield('script')
 </body>
 </html>

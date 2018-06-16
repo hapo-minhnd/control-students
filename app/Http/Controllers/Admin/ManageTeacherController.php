@@ -31,7 +31,9 @@ class ManageTeacherController extends Controller
         $teacher->save();
         $email = new EmailActiveTeacher($teacher);
         Mail::to($teacher)->send($email);
-        return redirect(route('homeAdmin'));
+      return response()->json([
+          'status' => true,
+          'data' => '',
+      ]);
     }
-
 }

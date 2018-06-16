@@ -116,7 +116,11 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="/img/admin.jpg" class="user-image">
+                        @if (Auth::guard('student')->check())
+                            <img src="/img/{{Auth::guard('student')->user()->image}}" class="user-image">
+                        @else
+                            <img src="/img/admin.jpg" class="user-image">
+                        @endif
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         @if (Auth::guard('admin')->check())
                             <span class="hidden-xs">{{Auth::guard('admin')->user()->name}}</span>
@@ -129,8 +133,11 @@
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="/img/admin.jpg" class="img-circle" alt="User Image">
-
+                            @if (Auth::guard('student')->check())
+                                <img src="/img/{{Auth::guard('student')->user()->image}}" class="img-circle" alt="User Image">
+                            @else
+                                <img src="/img/admin.jpg" class="img-circle" alt="User Image">
+                            @endif
                             <p>
                                 @if (Auth::guard('teacher')->check())
                                     <span class="hidden-xs">{{Auth::guard('teacher')->user()->name_teacher}}</span> - Teacher
@@ -142,8 +149,8 @@
                             </p>
                         </li>
                         <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="row">
+                        {{--<li class="user-body">
+                            --}}{{--<div class="row">
                                 <div class="col-xs-4 text-center">
                                     <a href="#">Followers</a>
                                 </div>
@@ -153,16 +160,28 @@
                                 <div class="col-xs-4 text-center">
                                     <a href="#">Friends</a>
                                 </div>
-                            </div>
+                            </div>--}}{{--
                             <!-- /.row -->
-                        </li>
+                        </li>--}}
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                @if (Auth::guard('student')->check())
+                                    <a href="{{route('home_student')}}">Profile</a>
+                                @elseif(Auth::guard('teacher')->check())
+                                    <a href="{{route('home_teacher')}}">Profile</a>
+                                @elseif(Auth::guard('admin')->check())
+                                    <a href="{{route('homeAdmin')}}">Profile</a>
+                                @endif
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                @if (Auth::guard('student')->check())
+                                    <a href="{{route('log_Out_Student')}}">Sign out</a>
+                                @elseif(Auth::guard('teacher')->check())
+                                    <a href="{{route('log_out_teacher')}}">Sign out</a>
+                                @elseif(Auth::guard('admin')->check())
+                                    <a href="{{route('log_Out_Admin')}}">Sign out</a>
+                                @endif
                             </div>
                         </li>
                     </ul>

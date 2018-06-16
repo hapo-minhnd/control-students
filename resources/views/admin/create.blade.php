@@ -9,11 +9,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <h2>Register</h2>
+                        <h2>Tạo tài khoản học sinh: </h2>
                          <form method="post" action="{{url('admin/home/create/student')}}" class="form-validate">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="code_student">Code student:</label>
+                                <label for="code_student">Mã sinh viên:</label>
                                 <input type="text" class="form-control" id="code_student" name="code_student">
                             </div>
                              @if($errors->has('code_student'))
@@ -66,6 +66,10 @@
                              @if($errors->has('email'))
                                  <p class="bg-danger">{{$errors->first('email')}}</p>
                              @endif
+                             <div class="form-group">
+                                 <label for="filesTest">Ảnh đại diện:</label>
+                                 <input type="file" name="filesTest" required="true">
+                             </div>
                             <div class="form-group">
                                 <button style="cursor:pointer" type="submit" class="btn btn-primary">Submit</button>
                             </div>

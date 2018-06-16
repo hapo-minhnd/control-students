@@ -27,7 +27,8 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href={{route('index_semester_student')}}>Đăng ký lớp học</a></li>
+                    <li><a href={{route('pick_semester_student')}}>Đăng ký lớp học</a></li>
+                    <li><a href={{route('index_point')}}>Kết quả học tập</a></li>
                 </ul>
             </li>
             <li class="treeview" style="display: none">

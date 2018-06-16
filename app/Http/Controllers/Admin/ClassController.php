@@ -116,7 +116,7 @@ class ClassController extends Controller
 
     public function pickClass(Request $request, $id){
         $pointSubjects = PointSubject::join('classes', 'classes.code_class', '=' ,'subject_point.code_class')
-            ->select('code_student', 'semester', DB::raw('avg(point) as point'))
+            ->select('code_student', 'semester', DB::raw('avg(point) as avgpoint'), DB::raw('count(point) as die'))
             ->where('semester', $id)
             ->groupBy('code_student', 'semester')
             ->orderby('point', 'desc')

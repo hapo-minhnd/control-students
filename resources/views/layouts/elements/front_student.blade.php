@@ -35,5 +35,7 @@
 <script src="{{ asset('layouts/js/bootstrap.js') }}"></script>
 <script src="{{ asset('layouts/js/adminlte.js') }}"></script>
 <script src="{{ asset('layouts/js/custormer.js') }}"></script>
+<script src="{{ asset('layouts/js/jquery.min.js')}}"></script>
+
 </body>
 </html>
