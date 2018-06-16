@@ -11,7 +11,7 @@ class SubjectPoint extends Migration
      *
      * @return void
      */
-    /*public function up()
+    public function up()
     {
         Schema::create('subject_point', function (Blueprint $table) {
             $table->increments('id');
@@ -22,7 +22,7 @@ class SubjectPoint extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-    }*/
+    }
 
     /**
      * Reverse the migrations.

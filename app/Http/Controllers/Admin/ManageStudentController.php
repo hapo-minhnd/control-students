@@ -112,6 +112,7 @@ class ManageStudentController extends Controller
         $student->code_class = $request->code_class;
         $student->email = $request->email ;
         $student->email_token = str_random(20);
+        $student->image = $request->filesTest;
         $student->save();
         $email = new EmailActiveStudent($student);
         Mail::to($student)->send($email);

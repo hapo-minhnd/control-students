@@ -29,7 +29,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('info_Member')}}">Thông tin chung</a></li>
-                    <li><a href="{{route('update_info_Member')}}">Cập nhật Thông tin cá nhân</a></li>
+                    {{--<li><a href="{{route('update_info_Member')}}">Cập nhật Thông tin cá nhân</a></li>--}}
                     <li><a href="{{route('update_score')}}">Cập nhật điểm</a></li>
                     <li><a href="{{route('admin_check_point')}}">Thống kê điểm theo học kỳ</a></li>
                 </ul>

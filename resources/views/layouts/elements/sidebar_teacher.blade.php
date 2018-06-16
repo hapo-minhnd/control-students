@@ -20,13 +20,13 @@
             <li class="header">Chức năng:</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>Quản lý học sinh</span>
+                <a><i class="fa fa-link"></i> <span>Quản lý học sinh</span>
                     <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Kiểm tra thông tin</a></li>
+                    <li><a href="{{route('info_student')}}">Kiểm tra thông tin</a></li>
                     <li><a href="{{route('teacher_update_score')}}">Cập nhật điểm</a></li>
                 </ul>
             </li>
@@ -37,7 +37,9 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
+{{--
                     <li><a href="#">Thông tin</a></li>
+--}}
                     <li><a href={{route('pick_semester')}}>Đăng kí lớp</a></li>
                     <li><a href="#">Cập nhật thông tin</a></li>
                 </ul>

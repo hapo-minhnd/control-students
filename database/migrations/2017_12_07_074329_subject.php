@@ -13,13 +13,13 @@ class Subject extends Migration
      */
     public function up()
     {
-        /*Schema::create('subject', function (Blueprint $table) {
+        Schema::create('subject', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code_subject')->unique();
             $table->string('name_subject');
             $table->rememberToken();
             $table->timestamps();
-        });*/
+        });
     }
 
     /**

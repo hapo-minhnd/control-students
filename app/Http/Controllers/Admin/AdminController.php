@@ -127,7 +127,7 @@ class AdminController extends Controller
     public function searchPoint(Request $request){
         $codeSutdent = $request->input('code_student');
         $pointSubjects = PointSubject::join('classes', 'classes.code_class', '=' ,'subject_point.code_class')
-            ->select('code_student', 'semester', DB::raw('avg(point) as point'))
+            ->select('code_student', 'semester', DB::raw('avg(point) as avgpoint'), DB::raw('count(point) as die'))
             ->where('code_student', $codeSutdent)
             ->groupBy('code_student', 'semester')
             ->get();
