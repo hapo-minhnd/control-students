@@ -12,22 +12,22 @@
                 {{ csrf_field() }}
                 <div>
                     <div class="form-group">
-                        <label for="code_student">Search( MSSV):</label>
+                        <label for="code_student">Tìm kiếm theo MSSV:</label>
                         <input type="text" class="form-control" id="code_student_enter" name="code_student">
-                        <label for="code_student">Search( code class):</label>
+                        <label for="code_student">Tìm kiếm theo mã lớp:</label>
                         <input type="text" class="form-control" id="code_class" name="code_class">
                     </div>
                     <div class="form-group">
-                        <button style="cursor:pointer" type="submit" class="btn btn-primary">Submit</button>
+                        <button style="cursor:pointer" type="submit" class="btn btn-primary">Tìm kiếm</button>
                     </div>
                 </div>
             </form>
             <div class="col-sm-9">
                 <table class="table table-bordered table-striped">
                     <tr>
-                        <th>MSSV</th>
-                        <th>code class</th>
-                        <th>Point</th>
+                        <th>Mã số sinh viên</th>
+                        <th>Mã lớp học</th>
+                        <th>Điểm</th>
                     <tr>
                     @foreach(  $pointSubjects as $pointSubject)
                         <tr>

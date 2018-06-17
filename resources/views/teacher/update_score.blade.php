@@ -13,9 +13,9 @@
             <div class="col-sm-8 col-lg-offset-2">
                 <table class="table table-bordered table-striped dataTable">
                     <tr>
-                        <th>MSSV</th>
-                        <th>Code class</th>
-                        <th>Point</th>
+                        <th>Mã số sinh viên:</th>
+                        <th>Mã lớp học:</th>
+                        <th>Điểm:</th>
                     <tr>
                     @foreach(  $pointSubjects as $pointSubject)
                         <tr>
