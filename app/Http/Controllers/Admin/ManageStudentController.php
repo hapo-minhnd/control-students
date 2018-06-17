@@ -121,12 +121,17 @@ class ManageStudentController extends Controller
     public function update(UpdateStudent $request, $id)
     {
             $student = Student::findOrFail($id);
-            $student->code_student = $request->code_student;
-            $student->name = $request->name;
-            $student->year_of_birth = $request->year_of_birth;
-            $student->address = $request->address;
-            $student->code_class = $request->code_class;
-            $student->save();
+            if($request->code_student != ''){
+              $student->code_student = $request->code_student;
+              $student->name = $request->name;
+              $student->year_of_birth = $request->year_of_birth;
+              $student->address = $request->address;
+              $student->code_class = $request->code_class;
+              $student->save();
+            }elseif(($request->code_student == '') && ($request->check_delete == 1)){
+              $student = Student::findOrFail($id);
+              $student->delete();
+            }
         return redirect(route('info_Member'));
     }
     public function storePoint(UpdatePoint $request)
