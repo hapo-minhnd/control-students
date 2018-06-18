@@ -128,7 +128,7 @@ class ManageStudentController extends Controller
               $student->address = $request->address;
               $student->code_class = $request->code_class;
               $student->save();
-            }elseif(($request->code_student == '') && ($request->check_delete == 1)){
+            }elseif($request->code_student == ''){
               $student = Student::findOrFail($id);
               $student->delete();
             }

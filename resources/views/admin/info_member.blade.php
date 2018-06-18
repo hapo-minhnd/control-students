@@ -22,7 +22,7 @@
                 <tr role="row">
                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                         aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                        style="width: 182px;">Mã số sinh viên
+                        style="width: 182px;">Mã số sinh viên (*)
                     </th>
                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                         aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
@@ -46,25 +46,24 @@
                         <form method="post" action="{{route('update_student', $student->id)}}" id="form-check">
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
-                            <td><input type="text" class="form-control check-student none" id="code_student"
+                            <td><input type="text" class="form-control  check none" id="code_student"
                                        name="code_student"
                                        value="{{ $student->code_student }}"></td>
-                            <td><input type="text" class="form-control check-student none" id="name_student" name="name"
+                            <td><input type="text" class="form-control check none" id="name_student" name="name"
                                        value="{{ $student->name }}"></td>
-                            <td><input type="text" class="form-control check-student none" id="year_of_birth"
+                            <td><input type="text" class="form-control check none" id="year_of_birth"
                                        name="year_of_birth" value="{{ $student->Year_of_birth }}"></td>
-                            <td><input type="text" class="form-control check-student none" id="address" name="address"
+                            <td><input type="text" class="form-control check none" id="address" name="address"
                                        value="{{ $student->address }}"></td>
-                            <td><input type="text" class="form-control check-student none" id="code_class"
+                            <td><input type="text" class="form-control check none" id="code_class"
                                        name="code_class"
                                        value="{{ $student->code_class }}"></td>
                             <td class=" none">
-                                <button style="cursor:pointer" type="button"
-                                        class="btn btn-primary button-none-student">
+                                <button style="cursor:pointer" type="submit"
+                                        class="btn btn-primary button-none">
                                     Submit
                                 </button>
                             </td>
-                            <td class="none"><input type="text" name="check_delete" value="0" id="check-delete"></td>
                         </form>
                     </tr>
                 @endforeach
@@ -78,16 +77,15 @@
 @endsection
 @section("script")
     <script>
-      $(".check-student").focus(function () {
-        $(".check-student").keyup(function (event) {
+      $(".code-student").focus(function () {
+        $(".code-student").keyup(function (event) {
           if (event.keyCode === 13) {
-            let data = $('#code_student').val();
+            let data = $(this).val();
             if (data == '') {
               if (confirm('Bạn chắc chắn muốn xóa học sinh  này chứ')) {
-                 $("#check-delete").val(1);
-                $("#form-check").submit();
+                $(".button-none").attr('type', 'submit');
+                $('#form-check').submit();
               } else {
-                $("#check-delete").val(0);
               }
             }
           }
