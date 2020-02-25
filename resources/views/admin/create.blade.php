@@ -20,40 +20,40 @@
                                  <p class="bg-danger">{{$errors->first('code_student')}}</p>
                              @endif
                             <div class="form-group">
-                                <label for="password">Password:</label>
+                                <label for="password">Mật khẩu:</label>
                                 <input type="password" class="form-control" id="password" name="password">
                             </div>
                              @if($errors->has('password'))
                                  <p class="bg-danger">{{$errors->first('password')}}</p>
                              @endif
                             <div class="form-group">
-                                <label for="Retype_password">Retype_password:</label>
+                                <label for="Retype_password">Nhập lại mật khẩu:</label>
                                 <input type="password" class="form-control" id="Retype_password" name="Retype_password">
                             </div>
 
                             <div class="form-group">
-                                <label for="name">Name:</label>
+                                <label for="name">Họ và tên:</label>
                                 <input type="text" class="form-control" id="name" name="name">
                             </div>
                              @if($errors->has('name'))
                                  <p class="bg-danger">{{$errors->first('name')}}</p>
                              @endif
                             <div class="form-group">
-                                <label for="year_of_birth">Year of birth:</label>
+                                <label for="year_of_birth">Ngày sinh:</label>
                                 <input type="date" class="form-control" id="year_of_birth" name="year_of_birth">
                             </div>
                              @if($errors->has('year_of_birth'))
                                  <p class="bg-danger">{{$errors->first('year_of_birth')}}</p>
                              @endif
                             <div class="form-group">
-                                <label for="address">Adress:</label>
+                                <label for="address">Quê quán:</label>
                                 <input type="text" class="form-control" id="address" name="address">
                             </div>
                              @if($errors->has('address'))
                                  <p class="bg-danger">{{$errors->first('address')}}</p>
                              @endif
                             <div class="form-group">
-                                <label for="code_class">Code class:</label>
+                                <label for="code_class">Lớp học:</label>
                                 <input type="text" class="form-control" id="code_class" name="code_class">
                             </div>
                              @if($errors->has('password'))

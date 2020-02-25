@@ -24,7 +24,6 @@ class UpdateStudent extends FormRequest
     public function rules()
     {
         return [
-            'code_student' =>'required|max:12',
             'name' => 'required|max:100',
             'year_of_birth' => 'required|max:100',
             'address' => 'required|max:100',

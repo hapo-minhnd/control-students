@@ -8,7 +8,7 @@
 
         <!-- Main content -->
         <section class="content container-fluid">
-
+            <div class="loader"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
@@ -78,6 +78,7 @@
       $('#sendAdvice').click(function (e) {
         let data = $("#consultation").serialize();
         e.preventDefault();
+        $('.loader').show();
         $.ajax({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -88,10 +89,12 @@
           dataType: 'json',
           contentType: "application/x-www-form-urlencoded",
           success: function (data) {
+            $('.loader').hide();
             $("#consultation")[0].reset();
             alert('Tạo tài khoản thành công!');
           },
           error: function (data) {
+            $('.loader').hide();
             alert('Tạo tài khoản thất bại!');
           },
         });
